@@ -1,5 +1,7 @@
 import java.util.*;
 
+// Selection Sort without using objects
+
 public class App {
 
     public static String[] createSuffix(String characters) { // running time: O(n) // creates an array of suffixes
@@ -47,7 +49,6 @@ public class App {
 
     public static void main(String[] args) {
 
-        // TODO: create a randomizer for characters
         String characters = randomString(5);
         String[] input = createSuffix(characters);
         
@@ -67,7 +68,7 @@ public class App {
         }
 
         for(int i=0; i<characters.length(); i++) {
-            System.out.print(Arrays.asList(createSuffix(characters)).indexOf(input[i]) + " ");
+            System.out.print(Arrays.asList(createSuffix(characters)).indexOf(input[i]) + " "); 
         }
 
     }
