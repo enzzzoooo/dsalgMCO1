@@ -1,0 +1,15 @@
+createSuffix(String characters) // running time: O(n) 	// creates an array of suffixes
+1: String[] suffixes = new String[characters.length]	// array of strings with length = characters.length where suffixes will be stored
+2: for i = 0 to characters.length					// cost: O(n) 
+3:	suffixes[i] = characters.substring(i)			// the .substring() function returns the substring of characters variable i.e. "hello".substring(1) is "ello"
+4: return suffixes								// return array of String for selectionSort
+
+Selection Sort Pseudocode (sorts array of String)
+
+selectionSort(String[] arr) // running time: O(n) x O(n) = O(n^2) // using the data returned by createSuffix as parameter
+1: for i = 0 to arr.length - 1			// cost: O(n) 
+3:	for j = i + 1 to arr.length			// cost: O(n) // j is at the right of i
+4:		if arr[i].compareTo(arr[j]) > 0	// checks whether arr[i] is lexicographically greater than arr[j]
+5:			temp = arr[i]				// swap the values
+6:			arr[i] = arr[j]
+8:			arr[j] = temp
