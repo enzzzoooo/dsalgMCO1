@@ -3,9 +3,31 @@ import java.util.*;
 public class SelectionSort {
     
     public static void main(String[] args) {
-        test(128); // starting at n = 128 and doubles per recursion
+        // recursive method for Empirical Analysis of Running Time: 
+        // test(128); // starting at n = 128 and doubles per recursion
+
+        // suffixes is an ArrayList of Suffix objects will store the Suffix objects returned by createSuffix(), 
+        // randomString() generates a random string from the alphabet {a, c, g, t} of length n
+        ArrayList<Suffix> suffixes = createSuffix(randomString(5));
+
+        // NOTE: this is for checking the output of the function
+        System.out.println("Unsorted:");
+        for (Suffix suffix : suffixes) {
+            System.out.println(suffix.getIndex() + " " + suffix.getStringDNA());
+        }
+
+        // selectionSort() sorts the objects in the suffixes ArrayList
+        selectionSort(suffixes);
+
+        // NOTE: this is for checking the output of selectionSort()
+        System.out.println("\nSorted:");
+        for (Suffix suffix : suffixes) {
+            System.out.println(suffix.getIndex() + " " + suffix.getStringDNA());
+        }   
+        
     }
 
+    // method used for Empirical Analysis of Running Time
     public static void test(int n) {
         System.out.println("n = " + n);
 
