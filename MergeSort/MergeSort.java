@@ -5,7 +5,7 @@ public class MergeSort {
 
     public static void main(String args[]) {
 
-        // recursive method for Empirical Analysis of Running Time: test
+        // recursive method for Empirical Analysis of Running Time:
         // test(128); // starting at n = 128 and doubles per recursion
 
         // suffixes is an ArrayList of Suffix objects will store the Suffix objects returned by createSuffix(),
