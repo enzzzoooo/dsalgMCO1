@@ -1,11 +1,9 @@
 import java.util.*;
 
-// Selection Sort using 
-
 public class SelectionSort {
     
 
-    public static ArrayList<Suffix> createSuffix(String characters) { // running time: O(n^2) // creates an array of suffixes
+    public static ArrayList<Suffix> createSuffix(String characters) { // running time: O(nxn) = O(n^2) // creates an array of suffixes
         ArrayList<Suffix> suffixes = new ArrayList<>();
 
         for(int i=0; i<characters.length(); i++) { // cost: O(n)
@@ -14,39 +12,7 @@ public class SelectionSort {
             // the time complexity cost of .substring is O(n)
         }
 
-        // NOTE: this is for checking the output of the function
-        System.out.println("Unsorted:");
-        for (Suffix suffix : suffixes) {
-            System.out.println( suffix.getIndex() + " " + suffix.getStringDNA());
-        }
-
         return suffixes; // return array of String
-    }
-
-    // running time:
-    public static ArrayList<Suffix> selectionSort(ArrayList<Suffix> suffixes) {
-
-        for(int i=0; i<suffixes.size() - 1; i++) {      // cost: O(n) 
-            for(int j=i+1; j<suffixes.size(); j++) {    // cost: O(n)   // j is always at the right of i in the array
-                // cost: O(nxm) // checks whether arr[i] is lexicographically greater than arr[j]
-                if(suffixes.get(i).getStringDNA().compareTo(suffixes.get(j).getStringDNA()) > 0) {  
-                    String tempString = suffixes.get(i).getStringDNA(); // swaps the values
-                    suffixes.get(i).setStringDNA(suffixes.get(j).getStringDNA());
-                    suffixes.get(j).setStringDNA(tempString);
-
-                    int tempInt = suffixes.get(i).getIndex(); // swaps the values
-                    suffixes.get(i).setIndex(suffixes.get(j).getIndex());
-                    suffixes.get(j).setIndex(tempInt);
-                }
-            }
-        }
-
-        System.out.println("Sorted:");
-        for (Suffix suffix : suffixes) {
-            System.out.println( suffix.getIndex() + " " + suffix.getStringDNA());
-        }
-
-        return suffixes;
     }
 
     public static String randomString(int n) { // generates a random string from the alphabet {a, c, g, t} of length n
@@ -61,32 +27,64 @@ public class SelectionSort {
         return retval;
     }
 
+    // running time:
+    public static void selectionSort(ArrayList<Suffix> suffixes) {
+        // long startTime = System.nanoTime();
+
+        for(int i=0; i<suffixes.size() - 1; i++) {      // cost: O(n) 
+            for(int j=i+1; j<suffixes.size(); j++) {    // cost: O(n) // j is always at the right of i in the array
+                // cost: O(nxm) // checks whether arr[i] is lexicographically greater than arr[j]
+                if(suffixes.get(i).getStringDNA().compareTo(suffixes.get(j).getStringDNA()) > 0) {  
+                    String tempString = suffixes.get(i).getStringDNA(); // swaps the values
+                    suffixes.get(i).setStringDNA(suffixes.get(j).getStringDNA());
+                    suffixes.get(j).setStringDNA(tempString);
+
+                    int tempInt = suffixes.get(i).getIndex(); // swaps the values
+                    suffixes.get(i).setIndex(suffixes.get(j).getIndex());
+                    suffixes.get(j).setIndex(tempInt);
+                }
+            }
+        }
+
+        // long duration = (System.nanoTime() - startTime);
+        // System.out.println("\nRuntime: " + duration);
+    }
+
+    public static void test(int n) {
+        System.out.println("n = " + n);
+        if(n<33554432){
+            long sum = 0;
+            int k = 10;
+
+            for(int i=0; i<k; i++) {
+                ArrayList<Suffix> suffixes = createSuffix(randomString(n));
+
+                // NOTE: this is for checking the output of the function
+                // System.out.println("========================================\nUnsorted:");
+                // for (Suffix suffix : suffixes) {
+                //     System.out.println(suffix.getIndex() + " " + suffix.getStringDNA());
+                // }
+
+                long startTime = System.nanoTime();
+                selectionSort(suffixes);
+                long duration = (System.nanoTime() - startTime);
+                // System.out.println("\nRuntime: " + duration);
+                sum = sum + duration;
+
+                // NOTE: this is for checking the output of selectionSort()
+                // System.out.println("\nSorted:");
+                // for (Suffix suffix : suffixes) {
+                //     System.out.println(suffix.getIndex() + " " + suffix.getStringDNA());
+                // }    
+            }
+
+            System.out.println("Average Runtime = " + sum/k + "\n");
+
+            test(n*2);
+        }
+    }
+
     public static void main(String[] args) {
-
-        ArrayList<Suffix> suffixes = createSuffix(randomString(5));
-        selectionSort(suffixes);
-
-        // TODO: create a randomizer for characters
-        // String characters = randomString(5);     // store a random string of letters {a, c, g, t} in characters variable
-        // String[] input = createSuffix(characters);  // creates the suffixes and stores it inside an array of String
-        
-        // System.out.println("Unsorted suffixes:");
-
-        // for(String string : input) {
-        //     System.out.println(string);
-        // }
-        // System.out.println();
-        
-        // System.out.println("Sorted suffixes:");
-        // selectionSort(input);
-
-        // for(String string : input) {
-        //     System.out.println(string);
-        // }
-
-        // for(int i=0; i<characters.length(); i++) {
-        //     System.out.print(Arrays.asList(createSuffix(characters)).indexOf(input[i]) + " ");
-        // }
-
+        test(128); // starting at n = 128 and doubles per recursion
     }
 }

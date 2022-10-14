@@ -20,7 +20,8 @@ public class App {
     }
 
 
-    public static void selectionSort(String[] suffixes) {
+    public static int[] selectionSort(String[] suffixes) {
+        int[] index = new int[suffixes.length];
 
         for(int i=0; i<suffixes.length - 1; i++) {              // cost: O(n) 
             for(int j=i+1; j<suffixes.length; j++) {            // cost: O(n) // j is always at the right of i in the array
@@ -28,9 +29,15 @@ public class App {
                     String temp = suffixes[i];                  // swaps the values
                     suffixes[i] = suffixes[j];
                     suffixes[j] = temp;
+
+                    int tempInt = i;
+                    index[i] = j;
+                    index[j] = tempInt;
                 }
             }
         }
+
+        return index;
     }
 
     public static String randomString(int n) { // generates a random string from the alphabet {a, c, g, t} of length n
@@ -61,15 +68,19 @@ public class App {
         
         System.out.println("Sorted suffixes:");
         
-        selectionSort(input);
+        int[] index = selectionSort(input);
 
-        for(String string : input) {
-            System.out.println(string);
+        // for(String string : input) {
+        //     System.out.println(string);
+        // }
+
+        for(int i=0; i<characters.length() - 1; i++) {
+            System.out.println(index[i] + " " + input[i]);
         }
 
-        for(int i=0; i<characters.length(); i++) {
-            System.out.print(Arrays.asList(createSuffix(characters)).indexOf(input[i]) + " "); 
-        }
+        // for(int i=0; i<characters.length(); i++) {
+        //     System.out.print(Arrays.asList(createSuffix(characters)).indexOf(input[i]) + " "); 
+        // }
 
     }
 }
