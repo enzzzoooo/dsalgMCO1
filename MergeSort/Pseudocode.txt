@@ -8,7 +8,7 @@ mergeSort(String[] arr)
 	arrayOne = a[0]...a[midpoint - 1] //assignment through for loop
 	arrayTwo = a[midpoint]...a[arr.length - 1] // assignment through for loop
 
-return merge(arrayOne, arrayTwo)
+	return merge(arrayOne, arrayTwo)
 
 /******************************************/
 
