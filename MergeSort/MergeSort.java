@@ -105,12 +105,12 @@ public class MergeSort {
 
         // while arrA and arrB have elements
         while (arrA.size() != 0 && arrB.size() != 0) {
-
+            
+            String tempA = arrA.get(0).getStringDNA();
+            String tempB = arrB.get(0).getStringDNA();
+            
             // NOTE: repeater is used to increment the counter
             while (repeater) {
-
-                String tempA = arrA.get(0).getStringDNA();
-                String tempB = arrB.get(0).getStringDNA();
 
                 //using strings at index 0, compare the chars at index counter
                 if (tempA.charAt(counter) > tempB.charAt(counter)) {
