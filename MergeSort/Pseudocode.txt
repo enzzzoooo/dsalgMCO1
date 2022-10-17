@@ -1,4 +1,4 @@
-mergeSort(String[] arr)
+emergeSort(String[] arr)
 
 	if (arr == 1)
 		return arr
@@ -8,8 +8,7 @@ mergeSort(String[] arr)
 	arrayOne = a[0]...a[midpoint - 1] //assignment through for loop
 	arrayTwo = a[midpoint]...a[arr.length - 1] // assignment through for loop
 	
-	arrayOne = mergeSort(arrayOne)
-	arrayTwo = mergeSort(arrayTwo)
+	arrayOne = 
 
 	return merge(arrayOne, arrayTwo)
 
@@ -24,36 +23,30 @@ merge(String[] arrA, String[] arrB)
 
 	while (arrA and arrB have elements)
 
-		//loop used to progress char comparison of strings
-		while (repeater)
+		//using strings at index 0, compare the chars at index counter
+		if ( arrA[0][counter] > arrB[0][counter] )
+			add arrB[0] to the end of arrC
+			remove arrB[0] from arrB
+			counter = 0
+		else if ( arrA[0][counter] < arrB[0][counter] )
+			add arrA[0] to the end of arrC
+			remove arrA[0] from arrA
+			counter = 0
 
-			//using strings at index 0, compare the chars at index counter
-			if ( arrA[0][counter] > arrB[0][counter] )
-				add arrB[0] to the end of arrC
-				remove arrB[0] from arrB
-				repeater = false
-			else if ( arrA[0][counter] < arrB[0][counter] )
-				add arrA[0] to the end of arrC
-				remove arrA[0] from arrA
-				repeater = false
+		//under the assumption no arrays have the same size
+		//if condition above not satisfied + reached the size limit of an array
+		//automatically assign that arr to the end of arrC
+		else if (arrA.length == counter + 1)
+			add arrA[0] to the end of arrC
+			remove arrA[0] from arrA
+			counter = 0
+		else if (arrB.length == counter + 1)
+			add arrB[0] to the end of arrC
+			remove arrB[0] from arrB
+			counter = 0
+		else
+			counter++
 
-			//under the assumption no arrays have the same size
-			//if the condition above not satisfied and reached the size limit of an array
-			//automatically assign that arr to the end of arrC
-			else if (arrA.length == counter + 1)
-				add arrA[0] to the end of arrC
-				remove arrA[0] from arrA
-				repeater = false
-			else if (arrB.length == counter + 1)
-				add arrB[0] to the end of arrC
-				remove arrB[0] from arrB
-				repeater = false
-			else
-				counter++
-
-		//reset repeater and counter
-		repeater = true
-		counter = 0
 
 	while (arrA has elements)
 		add arrA[0] to the end of arrC
