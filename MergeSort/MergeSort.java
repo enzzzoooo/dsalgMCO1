@@ -100,7 +100,6 @@ public class MergeSort {
     public static ArrayList<Suffix> merge(ArrayList<Suffix> arrA, ArrayList<Suffix> arrB) {
 
         ArrayList<Suffix> arrC = new ArrayList<>(); // used to store the merged array
-        boolean repeater = true; // used
         int counter = 0;
 
         // while arrA and arrB have elements
@@ -109,40 +108,33 @@ public class MergeSort {
             String tempA = arrA.get(0).getStringDNA();
             String tempB = arrB.get(0).getStringDNA();
             
-            // NOTE: repeater is used to increment the counter
-            while (repeater) {
-
-                //using strings at index 0, compare the chars at index counter
-                if (tempA.charAt(counter) > tempB.charAt(counter)) {
-                    arrC.add(arrB.get(0)); //add b[0] to the end of c
-                    arrB.remove(0);//remove b[0] from b
-                    repeater = false;
-                }
-                else if (tempA.charAt(counter) < tempB.charAt(counter)) {
-                    arrC.add(arrA.get(0)); //add a[0] to the end of c
-                    arrA.remove(0); //remover a[0] from a
-                    repeater = false;
-                }
-
-                // ASSUMPTION: no arrays have the same size
-                // if the condition above not satisfied and the size limit of an array is reached
-                // automatically assign that arr to the end of arrC
-                else if (tempA.length() == counter + 1) {
-                    arrC.add(arrA.get(0));
-                    arrA.remove(0);
-                    repeater = false;
-                }
-                else if (tempB.length() == counter + 1) {
-                    arrC.add(arrB.get(0)); //add b[0] to the end of c
-                    arrB.remove(0);//remove b[0] from b
-                    repeater = false;
-                }
-                else {
-                    counter++;
-                }
+            //using strings at index 0, compare the chars at index counter
+            if (tempA.charAt(counter) > tempB.charAt(counter)) {
+                arrC.add(arrB.get(0)); //add b[0] to the end of c
+                arrB.remove(0);//remove b[0] from b
+                counter = 0;
             }
-            repeater = true;
-            counter = 0;
+            else if (tempA.charAt(counter) < tempB.charAt(counter)) {
+                arrC.add(arrA.get(0)); //add a[0] to the end of c
+                arrA.remove(0); //remover a[0] from a
+                counter = 0;
+            }
+            // ASSUMPTION: no arrays have the same size
+            // if the condition above not satisfied and the size limit of an array is reached
+            // automatically assign that arr to the end of arrC
+            else if (tempA.length() == counter + 1) {
+                arrC.add(arrA.get(0));
+                arrA.remove(0);
+                repeater = false;
+            }
+            else if (tempB.length() == counter + 1) {
+                arrC.add(arrB.get(0)); //add b[0] to the end of c
+                arrB.remove(0);//remove b[0] from b
+                repeater = false;
+            }
+            else {
+                counter++;
+            }
         }
 
         // while arrA has elements
