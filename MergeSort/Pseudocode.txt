@@ -36,7 +36,7 @@ merge(String[] arrA, String[] arrB)
 			add arrA[0] to the end of arrC
 			remove arrA[0] from arrA
 			counter = 0				// resets the counter to 0
-		else if (arrB[0].length == counter + 1)		// checks whether the string of arrA has reached its final index
+		else if (arrB[0].length == counter + 1)		// checks whether the string of arrB has reached its final index
 			add arrB[0] to the end of arrC
 			remove arrB[0] from arrB
 			counter = 0
