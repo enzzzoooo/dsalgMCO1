@@ -1,51 +1,47 @@
-emergeSort(String[] arr)
+MERGESORT PSEUDOCODE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+mergeSort(String[] arr)
 
-	if (arr == 1)
-		return arr
+	if (arr == 1)					// checks if array arr is of size 1
+		return arr				// returns the array
 
-	midpoint = arr.length / 2;
+	midpoint = arr.length / 2;			// computes the midpoint of the array by dividing its size by 2
 
-	arrayOne = a[0]...a[midpoint - 1] //assignment through for loop
-	arrayTwo = a[midpoint]...a[arr.length - 1] // assignment through for loop
+	arrayOne = a[0]...a[midpoint - 1] 		// assigns arrayOne with the values of arr from index 0 to midpoint - 1 
+	arrayTwo = a[midpoint]...a[arr.length - 1] 	// assigns arrayTwo with the values of arr from index midpoint to last index 
 	
-	aarrayOne = mergeSort(arrayOne)
-        arrayTwo = mergeSort(arrayTwo)
+	arrayOne = mergeSort(arrayOne)			// calls mergeSort to arrayOne
+        arrayTwo = mergeSort(arrayTwo)			// calls mergeSort to arrayTwo
 
-	return merge(arrayOne, arrayTwo)
+	return merge(arrayOne, arrayTwo)		// calls merge to arrayOne and arrayTwo
 
-/******************************************/
 
 merge(String[] arrA, String[] arrB)
 
-	String[] arrC //used to store sorted arrays
+	String[] arrC 						// used to store the sorted suffixes
 
-	counter = 0
+	counter = 0						// used to increment the char index of the strings being compared
 
-	while (arrA and arrB have elements)
+	while (arrA and arrB have elements)	
 
-		//using strings at index 0, compare the chars at index counter
-		if ( arrA[0][counter] > arrB[0][counter] )
+		if ( arrA[0][counter] > arrB[0][counter] )	// checks whether the char of string arrA[0] is greater than the char of string arrB[0]
 			add arrB[0] to the end of arrC
 			remove arrB[0] from arrB
-			counter = 0
-		else if ( arrA[0][counter] < arrB[0][counter] )
+			counter = 0				// resets the counter
+		else if ( arrA[0][counter] < arrB[0][counter] ) // checks whether the char of string arrA[0] is less than the char of string arrB[0]
 			add arrA[0] to the end of arrC
 			remove arrA[0] from arrA
-			counter = 0
+			counter = 0				// resets the counter to 0
 
-		//under the assumption no arrays have the same size
-		//if condition above not satisfied + reached the size limit of an array
-		//automatically assign that arr to the end of arrC
-		else if (arrA.length == counter + 1)
+		else if (arrA[0].length == counter + 1)		// checks whether the string of arrA has reached its final index
 			add arrA[0] to the end of arrC
 			remove arrA[0] from arrA
-			counter = 0
-		else if (arrB.length == counter + 1)
+			counter = 0				// resets the counter to 0
+		else if (arrB[0].length == counter + 1)		// checks whether the string of arrA has reached its final index
 			add arrB[0] to the end of arrC
 			remove arrB[0] from arrB
 			counter = 0
 		else
-			counter++
+			counter++				// increments the counter
 
 
 	while (arrA has elements)
