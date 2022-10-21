@@ -125,12 +125,12 @@ public class MergeSort {
             else if (tempA.length() == counter + 1) {
                 arrC.add(arrA.get(0));
                 arrA.remove(0);
-                repeater = false;
+                counter = 0;
             }
             else if (tempB.length() == counter + 1) {
                 arrC.add(arrB.get(0)); //add b[0] to the end of c
                 arrB.remove(0);//remove b[0] from b
-                repeater = false;
+                counter = 0;
             }
             else {
                 counter++;
