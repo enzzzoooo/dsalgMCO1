@@ -6,8 +6,8 @@ mergeSort(String[] arr)
 
 	midpoint = arr.length / 2;			// computes the midpoint of the array by dividing its size by 2
 
-	arrayOne = a[0]...a[midpoint - 1] 		// assigns arrayOne with the values of arr from index 0 to midpoint - 1 
-	arrayTwo = a[midpoint]...a[arr.length - 1] 	// assigns arrayTwo with the values of arr from index midpoint to last index 
+	arrayOne = arr[0]...arr[midpoint - 1] 		// assigns arrayOne with the values of arr from index 0 to midpoint - 1 
+	arrayTwo = arr[midpoint]...arr[arr.length - 1] 	// assigns arrayTwo with the values of arr from index midpoint to last index 
 	
 	arrayOne = mergeSort(arrayOne)			// calls mergeSort to arrayOne
         arrayTwo = mergeSort(arrayTwo)			// calls mergeSort to arrayTwo
