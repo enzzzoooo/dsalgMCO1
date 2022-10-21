@@ -8,7 +8,8 @@ emergeSort(String[] arr)
 	arrayOne = a[0]...a[midpoint - 1] //assignment through for loop
 	arrayTwo = a[midpoint]...a[arr.length - 1] // assignment through for loop
 	
-	arrayOne = 
+	aarrayOne = mergeSort(arrayOne)
+        arrayTwo = mergeSort(arrayTwo)
 
 	return merge(arrayOne, arrayTwo)
 
@@ -18,7 +19,6 @@ merge(String[] arrA, String[] arrB)
 
 	String[] arrC //used to store sorted arrays
 
-	repeater = true
 	counter = 0
 
 	while (arrA and arrB have elements)
