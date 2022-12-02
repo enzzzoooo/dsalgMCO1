@@ -4,8 +4,8 @@ public class Main {
 	
     public static void main(String[] args) {
 
-        int k = 7;
-        int n = 100000;
+        int k = 5;
+        int n = 10000;
         
     	String dnaString = randomString(n);
     				
