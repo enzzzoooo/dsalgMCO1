@@ -26,8 +26,8 @@ public class Main {
      
         BinarySearchTree tree = new BinarySearchTree();
 
-        for(int count = 0; count + k <= n; count++){
-            String subString = dnaString.substring(count, count + k);
+        for(int i = 0; i + k <= n; i++){
+            String subString = dnaString.substring(i, i + k);
             if(tree.search(tree.root,subString) == null){
                 tree.insert(new Node(subString));
             } 
