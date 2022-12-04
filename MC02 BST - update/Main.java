@@ -16,7 +16,7 @@ public class Main {
 		// for printing purposes
 		System.out.println(dnaString);
 		printDistribution(treeRoot); 
-		System.out.println("\nk = " + k);
+		System.out.println("\n\nk = " + k);
 		System.out.println("n = " + n);
 		System.out.println("Runtime of kmerDistribution() = " + duration + " ns");
     }
@@ -59,8 +59,7 @@ public class Main {
     		return;
     	}
     	printDistribution(node.left);
-    	System.out.println("\n" + node.getKey());
-    	System.out.println("Occurrences: " + node.occurrences);
+    	System.out.println(node.getKey() + "   " + node.occurrences);
     	printDistribution(node.right); 	
     }  
 }
