@@ -14,9 +14,9 @@ public class Main {
 		long duration = (System.nanoTime() - startTime);
 		
 		// for printing purposes
-		System.out.println(dnaString);
+		System.out.println(dnaString + "\n");
 		printDistribution(treeRoot); 
-		System.out.println("\n\nk = " + k);
+		System.out.println("\nk = " + k);
 		System.out.println("n = " + n);
 		System.out.println("Runtime of kmerDistribution() = " + duration + " ns");
     }
