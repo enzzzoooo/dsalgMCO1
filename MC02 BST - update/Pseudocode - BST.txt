@@ -1,0 +1,39 @@
+
+  kmerDistribution(k, n, dnaString)
+  1: tree = new BinarySearchTree()
+  2: for i = 0 to n-k
+  3:     subString = dnaString.subString(i, i + k)
+  4:     if tree.search(tree.root, subString) == null
+  5:         tree.insert(new Node(subString))
+  6:     else tree.search(tree.root, subString).occurences++
+
+  search(node, key)
+  1: if node == null or node.key == key
+  2:     return node
+  3: if key < node.key
+  4:     return search(node.left, key)
+  5: else return search(node.right, key) 
+
+  insert(node)
+  1: tempParent = null
+  2: tempNode = root
+  3: while tempNode != null
+  4:     tempParent = tempNode
+  5:     if node.key < tempNode.key
+  6:         tempNode = tempNode.left
+  7:     elseif node.key > tempNode.key
+  8:         tempNode = tempNode.right
+  9: node.parent = tempParent
+ 10: if tempParent == null
+ 11:     root = node
+ 12: elseif node.key < tempParent.key
+ 13:     tempParent.left = node
+ 14: elseif node.key > tempParent.key
+ 15:     tempParent.right = node
+
+  destroy(node)
+  1: if node != null
+  2:     destroy(node.left)
+  3:     destroy(node.right)
+  4:     node = null
+  
